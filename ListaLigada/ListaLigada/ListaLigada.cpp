@@ -128,6 +128,16 @@ void inserirElemento()
 	cin >> novo->valor;
 	novo->prox = NULL;
 
+	NO* aux = primeiro;
+
+	while (aux != NULL) {
+		if (aux->valor == novo->valor) {
+			cout << "Elemento nao inserido pois esta repetindo!" << endl;
+			free(novo);
+		}
+		aux = aux->prox;
+	}
+
 	if (primeiro == NULL)
 	{
 		primeiro = novo;
@@ -145,12 +155,58 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
+	NO* atual = primeiro;
+	NO* anterior = NULL;
+	int valorBuscado;
+	int controle = 0;
+
+	cout << "Digite um numero: ";
+	cin >> valorBuscado;
+
+	while (atual != NULL) {
+		if (atual->valor == valorBuscado) {
+			if (atual->valor == valorBuscado) {
+				if (anterior == NULL) {
+					primeiro = atual->prox;
+				}
+				else {
+					anterior->prox = atual->prox;
+				}
+				free(atual);
+			}
+			anterior = atual;
+			atual = atual->prox;
+			controle++;
+			break;
+		}
+		atual = atual->prox;
+	}
+
+	if (controle == 0) {
+		cout << "Valor nao encontrado!" << endl;
+	}
 }
 
 void buscarElemento()
 {
-	
+	NO* atual = primeiro;
+	int valorBuscado;
+	int controle = 0;
+
+	cout << "Digite um numero: ";
+	cin >> valorBuscado;
+
+	while (atual != NULL) {
+		if (atual->valor == valorBuscado) {
+			cout << "Encontrado: " << atual->valor << endl;
+			controle++;
+			break;
+		}
+		atual = atual->prox;
+	}
+	if (controle == 0) {
+		cout << "Valor nao encontrado!" << endl;
+	}
 }
 
 
