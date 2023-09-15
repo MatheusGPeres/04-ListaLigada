@@ -155,7 +155,7 @@ void inserirElemento()
 void excluirElemento()
 {
 	NO* atual = primeiro;
-	NO* anterior = nullptr;
+	NO* anterior = NULL;
 	int valorBuscado;
 	int controle = 0;
 
@@ -171,7 +171,7 @@ void excluirElemento()
 			else {
 				anterior->prox = atual->prox;
 			}
-			free(atual); // Libera a memória do nó excluído
+			free(atual);
 			controle++;
 			break;
 		}
