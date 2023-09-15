@@ -129,7 +129,6 @@ void inserirElemento()
 	novo->prox = NULL;
 
 	NO* aux = primeiro;
-
 	while (aux != NULL) {
 		if (aux->valor == novo->valor) {
 			cout << "Elemento nao inserido pois esta repetindo!" << endl;
@@ -156,7 +155,7 @@ void inserirElemento()
 void excluirElemento()
 {
 	NO* atual = primeiro;
-	NO* anterior = NULL;
+	NO* anterior = nullptr;
 	int valorBuscado;
 	int controle = 0;
 
@@ -165,20 +164,18 @@ void excluirElemento()
 
 	while (atual != NULL) {
 		if (atual->valor == valorBuscado) {
-			if (atual->valor == valorBuscado) {
-				if (anterior == NULL) {
-					primeiro = atual->prox;
-				}
-				else {
-					anterior->prox = atual->prox;
-				}
-				free(atual);
+			cout << "Elemento a ser excluido: " << atual->valor << endl;
+			if (anterior == NULL) {
+				primeiro = atual->prox;
 			}
-			anterior = atual;
-			atual = atual->prox;
+			else {
+				anterior->prox = atual->prox;
+			}
+			free(atual); // Libera a memória do nó excluído
 			controle++;
 			break;
 		}
+		anterior = atual;
 		atual = atual->prox;
 	}
 
@@ -208,7 +205,6 @@ void buscarElemento()
 		cout << "Valor nao encontrado!" << endl;
 	}
 }
-
 
 
 // retorna um ponteiro para o elemento buscado
